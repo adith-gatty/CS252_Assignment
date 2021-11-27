@@ -11,6 +11,11 @@ Kernel modules are loaded using the insmod command, which is run as follows:
 sudo insmod mymodule.ko
 ```
 To check whether the module has loaded, enter the lsmod command and search for the module mymodule.
+```
+lsmod
+```
+![output](https://github.com/adith-gatty/CS252_Assignment/blob/main/mymodule/mymodule_images/mymodule_lsmod.JPG)
+
 Module entry point is invoked when the module is inserted into the kernel.
 
 To check the contents of this message in the kernel log buffer, enter the command.
