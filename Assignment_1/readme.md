@@ -11,6 +11,11 @@ Kernel modules are loaded using the insmod command, which is run as follows:
 sudo insmod Assignment_1.ko
 ```
 To check whether the module has loaded, enter the lsmod command and search for the module Assignment_1.
+``` 
+lsmod 
+```
+![lsmod](https://github.com/adith-gatty/CS252_Assignment/blob/main/Assignment_1/Assignment_1_images/Assignment_1_lsmod.JPG)
+
 This creates a new entry in the /proc/jiffies file system. It displays the value of Jiffies when the following command in entered
 ```
 cat /proc/jiffies
