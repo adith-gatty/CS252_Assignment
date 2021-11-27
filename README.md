@@ -14,6 +14,48 @@
 I used Oracle VM Virtual Box to set up an Ubuntu Virtual Machine by downloading Ubuntu version 20.04.3 disc image file.\
 Link to download Oracle Virtual Box : [Click here](https://www.virtualbox.org/wiki/Downloads)\
 Link to download Ubuntu 20.04.3 LTS: [Click here](https://ubuntu.com/download/desktop)\
+Used gedit in VM as text editor to write C files.\
+Installed various packages required for creation of linux modules. 
+
+## Challenges faced
+I had to refresh my knowledge on linux commands because of transition from working on Windows to Ubuntu by watching various youtube videos.I had to look for solutions online to the errors I got when I compiled the simple.c program given in the textbook. I did the following changes to the code given in the textbook so as to make it compile successsfully on Ubuntu VM.
+* Changed the module entry point and module exit function given in the textbook as shown\
+``int simple init(void);`` to `` static int __init ModuleInit(void);``\
+``int simple exit(void);`` to `` static int __init ModuleExit(void);``\
+Reference used for this change: [Click here](https://www.youtube.com/watch?v=4tgluSJDA_E)
+* For the Assignment problems I made certain changes to avoid the errors caused  by replacing file_operations with proc_ops,changing the variable name proc_ops to p_ops and other different changes as shown
+
+**Original code in textbook**
+```
+ssize t proc read(struct file *file, char user *usr buf, size t count, loff t *pos);
+static struct file operations proc ops = {
+.owner = THIS MODULE,
+.read = proc read,
+};
+/* This function is called when the module is loaded. */
+int proc init(void)
+{
+
+proc create(PROC NAME, 0666, NULL, &proc ops);
+return 0;
+}
+```
+**Edited code with no errors**
+```
+ssize_t p_read(struct file *file, char __user *usr_buf, size_t count, loff_t *pos);
+static const struct proc_ops p_ops= {
+	.proc_read = p_read,
+};
+/* This function is called when the module is loaded. */
+static int __init ModuleInit(void) {
+
+	proc_create(PROC_NAME, 0666, NULL, &p_ops);
+	return 0;
+}
+```
+Reference used to solve this error: [Click here](https://stackoverflow.com/questions/64931555/how-to-fix-error-passing-argument-4-of-proc-create-from-incompatible-pointer)
+
+
 
 
 ## mymodule
@@ -47,6 +89,7 @@ The code for this project is in the Assignment_2 folder.
 * Textbook referred for this project: Operating System Concepts [Click here](https://drive.google.com/file/d/17YCH4pmuPNHppcsclKFZygoaIRBZ8Vcf/view)
 * Link to download Oracle Virtual Box : [Click here](https://www.virtualbox.org/wiki/Downloads)
 * Link to download Ubuntu 20.04.3 LTS: [Click here](https://ubuntu.com/download/desktop)
-* [Click here](https://www.youtube.com/watch?v=4tgluSJDA_E)
+* Link to create Makefile: [Click here](https://www.youtube.com/watch?v=4tgluSJDA_E)
 * Link to guide you to install Ubuntu on Oracle Virtual Box: [Click here](https://www.youtube.com/watch?v=x5MhydijWmc)
 * Link that helped me write the readme file: [Click here](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+* Stackoverflow solution for the /proc system error: [Click here](https://stackoverflow.com/questions/64931555/how-to-fix-error-passing-argument-4-of-proc-create-from-incompatible-pointer)
