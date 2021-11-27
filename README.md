@@ -27,16 +27,16 @@ Reference used for this change: [Click here](https://www.youtube.com/watch?v=4tg
 
 **Original code in textbook**
 ```
-ssize t proc read(struct file *file, char user *usr buf, size t count, loff t *pos);
-static struct file operations proc ops = {
-.owner = THIS MODULE,
-.read = proc read,
+ssize t proc_read(struct file *file, char user *usr buf, size t count, loff t *pos);
+static struct file_operations proc_ops = {
+.owner = THIS_MODULE,
+.read = proc_read,
 };
 /* This function is called when the module is loaded. */
-int proc init(void)
+int proc_init(void)
 {
 
-proc create(PROC NAME, 0666, NULL, &proc ops);
+proc create(PROC_NAME, 0666, NULL, &proc_ops);
 return 0;
 }
 ```
