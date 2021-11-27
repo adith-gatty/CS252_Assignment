@@ -35,6 +35,10 @@ You should see the message "Removing Kernel Module" along with values of greates
 **Output**\
 ![Output](https://github.com/adith-gatty/CS252_Assignment/blob/main/mymodule/mymodule_images/mymodule_remove.JPG)
 
+Because the kernel log buffer can fill up quickly, it often makes sense to clear the buffer periodically. This can be accomplished as follows:
+```
+sudo dmesg -c
+```
 
 **Required Output:**\
 ![Output](https://github.com/adith-gatty/CS252_Assignment/blob/main/mymodule/mymodule_images/mymodule_all.JPG)
