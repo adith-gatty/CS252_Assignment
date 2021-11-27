@@ -10,7 +10,12 @@ Kernel modules are loaded using the insmod command, which is run as follows:
 ```
 sudo insmod Assignment_2.ko
 ```
-To check whether the module has loaded, enter the lsmod command and search for the module Assignment_1.
+To check whether the module has loaded, enter the lsmod command and search for the module Assignment_2.
+```
+lsmod
+```
+![Output](https://github.com/adith-gatty/CS252_Assignment/blob/main/Assignment_2/Assignment_2_images/Assignment_2_lsmod.JPG)
+
 This creates a new entry in the /proc/seconds file system. It displays the value of number of elasped seconds since the kernel module was loaded.
 ```
 cat /proc/seconds
